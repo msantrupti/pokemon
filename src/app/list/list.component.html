@@ -9,16 +9,15 @@
   </div>
 </div>
 
-<div style="overflow: auto;height:450px;" >
-<div class="responsive" *ngFor="let pokemon of pokemons">
-  <div class="gallery">
-    <a target="_blank" (dblclick)="openModel(content, pokemon.name)">
-      <img src="https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg"  height="130px" width="130px" />
-    </a>
-    <div class="desc">{{ pokemon.name }}</div>
+<div style="overflow: auto;height:450px;">
+  <div class="responsive" *ngFor="let pokemon of pokemons">
+    <div class="gallery">
+      <a target="_blank" (dblclick)="openModel(content, pokemon.name)">
+        <img src="https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg" height="130px" width="130px" />
+      </a>
+      <div class="desc">{{ pokemon.name }}</div>
+    </div>
   </div>
-</div>
-
 </div>
 
 <ng-template #content let-modal>
@@ -27,9 +26,10 @@
       {{ selectedPokemon.name }}
     </h4>
     <div>
-        <span *ngFor="let type of selectedPokemon.types">
-          {{ type.type.name }}
-        </span>
+      Type:
+      <span *ngFor="let type of selectedPokemon.types">
+        {{ type.type.name }}
+      </span>
     </div>
   </div>
   <div class="modal-body">
@@ -38,8 +38,8 @@
         <img src="https://img.pokemondb.net/artwork/{{ selectedPokemon.name }}.jpg" width="250px" />
       </div>
       <div class="col-md-8" style="overflow: auto;height:300px;;">
-        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-          <ngb-panel title="Profile">
+        <ngb-accordion [closeOthers]="true" activeIds="static-1">
+          <ngb-panel id="static-1" title="Profile">
             <ng-template ngbPanelContent>
               <div class="row">
                 <div class="col-sm-4">
@@ -73,7 +73,6 @@
                 </div>
               </div>
               <hr>
-
               <div *ngIf="selectedPokemon && selectedPokemon.stats">
                 <table class="tbl">
                   <tr *ngFor="let stat of selectedPokemon.stats">
@@ -86,31 +85,28 @@
                   </tr>
                 </table>
               </div>
-
-
-
             </ng-template>
           </ngb-panel>
 
-          <ngb-panel title="Damage When Attacked">
+          <ngb-panel id="static-2" title="Damage When Attacked">
             <ng-template ngbPanelContent>
               <div *ngIf="selectedPokemonTypesData">
                 <div class="row">
                   <div class="col-md-4">
+                   Double Damage <hr>
                     <div *ngFor="let type of selectedPokemonTypesData">
-                      <div *ngFor="
-                          let damage of type.damage_relations.double_damage_from
-                        ">
-                        {{ damage.name }} x2
+                      <div *ngFor="let damage of type.damage_relations.double_damage_from">
+                          {{ damage.name }}
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
+                      Half Damage <hr>
                     <div *ngFor="let type of selectedPokemonTypesData">
                       <div *ngFor="
                           let damage of type.damage_relations.half_damage_from
                         ">
-                        {{ damage.name }} x0.5
+                        {{ damage.name }}
                       </div>
                     </div>
                   </div>

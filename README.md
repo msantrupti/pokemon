@@ -1,10 +1,8 @@
 # pokemon
 
-1. To install Angual CLI
+1. To install Angular CLI
  open command prompt and type : npm install -g @angular/cli
-2. To create a workspace and initial application, type :
- ng new pokemon
-3. To serve the application, type: 
+2. To serve the application, type: 
  ng serve --open
 ------------------------------------------------------------------
 

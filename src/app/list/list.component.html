@@ -13,6 +13,8 @@
   <div class="responsive" *ngFor="let pokemon of pokemons">
     <div class="gallery">
       <a target="_blank" (dblclick)="openModel(content, pokemon.name)">
+        <!-- <img *ngIf="validImage"  src="https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg" alt=".\pokemon\src\assets\pokeball.jpg" height="130px" width="130px" /> -->
+        <!-- <img  src="https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg" Error="this.src='https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg';"  alt=".\pokemon\src\assets\pokeball.jpg" height="130px" width="130px" /> -->
         <img src="https://img.pokemondb.net/artwork/{{ pokemon.name }}.jpg" height="130px" width="130px" />
       </a>
       <div class="desc">{{ pokemon.name }}</div>

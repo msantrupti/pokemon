@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PokeService } from '../poke.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormControl} from '@angular/forms'
+import { FormControl} from '@angular/forms';
+
 
 @Component({
   selector: 'app-list',
@@ -70,7 +71,7 @@ export class ListComponent implements OnInit {
     }
   }
 
-  Search(){    
+  Search(){
     this.pokemons = this.AllPokemons.filter(pokemon => pokemon.name.includes( this.search.value))
   }
 
